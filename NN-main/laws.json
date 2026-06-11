@@ -1,0 +1,49 @@
+{
+  "helmet_violation": {
+
+    "description":
+      "Riding without protective helmet",
+
+    "law_section":
+      "Motor Vehicles Act Section 129",
+
+    "base_fine": {
+
+      "Andhra Pradesh": 100,
+      "Telangana": 200,
+      "Karnataka": 500
+    }
+  },
+
+  "signal_jump": {
+
+    "description":
+      "Crossing traffic signal during red light",
+
+    "law_section":
+      "Motor Vehicles Act Section 184",
+
+    "base_fine": {
+
+      "Andhra Pradesh": 1000,
+      "Telangana": 1200,
+      "Karnataka": 1500
+    }
+  },
+
+  "seatbelt_violation": {
+
+    "description":
+      "Driving without seatbelt",
+
+    "law_section":
+      "Motor Vehicles Act Section 194B",
+
+    "base_fine": {
+
+      "Andhra Pradesh": 500,
+      "Telangana": 700,
+      "Karnataka": 1000
+    }
+  }
+}

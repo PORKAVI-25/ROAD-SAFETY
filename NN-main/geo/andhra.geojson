@@ -1,0 +1,22 @@
+{
+  "type": "Feature",
+
+  "properties": {
+    "state": "Andhra Pradesh"
+  },
+
+  "geometry": {
+
+    "type": "Polygon",
+
+    "coordinates": [[
+
+      [79.0, 13.0],
+      [81.0, 13.0],
+      [81.0, 16.0],
+      [79.0, 16.0],
+      [79.0, 13.0]
+
+    ]]
+  }
+}

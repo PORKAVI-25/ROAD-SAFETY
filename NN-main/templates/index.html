@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0">
+
+    <title>Smart Challan System</title>
+
+    <link rel="stylesheet"
+          href="/static/style.css">
+
+    <!-- LEAFLET MAP -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet/dist/leaflet.css"
+    />
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        🚦 Smart Challan Calculator
+    </h1>
+
+    <!-- ========================= -->
+    <!-- LIVE GPS INFO -->
+    <!-- ========================= -->
+
+    <div class="gps-panel">
+
+        <div class="gps-box">
+
+            <h3>📍 Current Location</h3>
+
+            <p id="locationText">
+                Detecting...
+            </p>
+
+        </div>
+
+        <div class="gps-box">
+
+            <h3>🚗 Vehicle Speed</h3>
+
+            <p id="speedText">
+                0 km/h
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- MAP -->
+    <!-- ========================= -->
+
+    <div id="map"></div>
+
+    <!-- ========================= -->
+    <!-- CONTROLS -->
+    <!-- ========================= -->
+
+    <div class="controls">
+
+        <button onclick="detectLocation()">
+            📡 Detect Location
+        </button>
+
+        <button onclick="startTracking()">
+            ▶ Start GPS Tracking
+        </button>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- CHALLAN SYSTEM -->
+    <!-- ========================= -->
+
+    <div class="chat-container">
+
+        <div id="chat-box"></div>
+
+        <input
+            type="text"
+            id="user-input"
+            placeholder="Enter violation
+            (Example: Helmet Violation)"
+        >
+
+        <!-- VEHICLE TYPE -->
+
+        <select id="wheelSelect">
+
+            <option value="2">
+                2 Wheeler
+            </option>
+
+            <option value="3">
+                3 Wheeler
+            </option>
+
+            <option value="4">
+                4 Wheeler
+            </option>
+
+            <option value="6">
+                Heavy Vehicle (6+)
+            </option>
+
+        </select>
+
+        <button onclick="getTrafficLaw()">
+
+            Get Traffic Law
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- LEAFLET -->
+<script
+src="https://unpkg.com/leaflet/dist/leaflet.js">
+</script>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

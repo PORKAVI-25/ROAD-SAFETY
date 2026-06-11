@@ -1,0 +1,22 @@
+{
+  "type": "Feature",
+
+  "properties": {
+    "state": "Telangana"
+  },
+
+  "geometry": {
+
+    "type": "Polygon",
+
+    "coordinates": [[
+
+      [77.0, 16.0],
+      [81.0, 16.0],
+      [81.0, 20.0],
+      [77.0, 20.0],
+      [77.0, 16.0]
+
+    ]]
+  }
+}
