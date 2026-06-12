@@ -133,6 +133,32 @@ src="https://unpkg.com/leaflet/dist/leaflet.js">
 </script>
 
 <script src="/static/script.js"></script>
+<!-- CHATBOT BUTTON -->
+<div id="chatbot-toggle">💬</div>
 
+<!-- CHATBOT WINDOW -->
+<div id="chatbot">
+    <div id="chatbot-header">
+        Smart Assistant
+        <span id="chatbot-close">✖</span>
+    </div>
+
+    <div id="chatbot-messages">
+        <div class="bot-msg">
+            Hello! Ask me about traffic rules.
+        </div>
+    </div>
+
+    <div id="chatbot-input-area">
+        <input
+            type="text"
+            id="chatbot-input"
+            placeholder="Ask a question..."
+        >
+        <button id="chatbot-send">
+            Send
+        </button>
+    </div>
+</div>
 </body>
 </html>
