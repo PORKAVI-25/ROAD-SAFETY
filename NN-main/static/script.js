@@ -416,3 +416,64 @@ async function getTrafficLaw() {
 
     input.value = "";
 }
+const chatbot = document.getElementById("chatbot");
+const chatbotToggle = document.getElementById("chatbot-toggle");
+const chatbotClose = document.getElementById("chatbot-close");
+const chatbotSend = document.getElementById("chatbot-send");
+const chatbotInput = document.getElementById("chatbot-input");
+const chatbotMessages = document.getElementById("chatbot-messages");
+
+chatbotToggle.onclick = () => {
+    chatbot.style.display = "flex";
+};
+
+chatbotClose.onclick = () => {
+    chatbot.style.display = "none";
+};
+
+chatbotSend.onclick = sendMessage;
+
+function sendMessage() {
+
+    const text = chatbotInput.value.trim();
+
+    if (!text) return;
+
+    chatbotMessages.innerHTML += `
+        <div class="user-msg">${text}</div>
+    `;
+
+    let reply = getBotReply(text);
+
+    chatbotMessages.innerHTML += `
+        <div class="bot-msg">${reply}</div>
+    `;
+
+    chatbotInput.value = "";
+
+    chatbotMessages.scrollTop =
+        chatbotMessages.scrollHeight;
+}
+
+function getBotReply(msg) {
+
+    msg = msg.toLowerCase();
+
+    if (msg.includes("helmet")) {
+        return "Helmet violation fine in Tamil Nadu is ₹1000.";
+    }
+
+    if (msg.includes("seat belt")) {
+        return "Seat belt violation fine is ₹1000.";
+    }
+
+    if (msg.includes("license")) {
+        return "Driving without license can attract a fine up to ₹5000.";
+    }
+
+    if (msg.includes("speed")) {
+        return "Over-speeding fines depend on vehicle type and state.";
+    }
+
+    return "I can answer traffic rule questions.";
+}
