@@ -416,3 +416,129 @@ async function getTrafficLaw() {
 
     input.value = "";
 }
+// =============================
+// CHATBOT
+// =============================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const chatbot =
+        document.getElementById("chatbot");
+
+    const chatbotToggle =
+        document.getElementById("chatbot-toggle");
+
+    const chatbotClose =
+        document.getElementById("chatbot-close");
+
+    const chatbotSend =
+        document.getElementById("chatbot-send");
+
+    const chatbotInput =
+        document.getElementById("chatbot-input");
+
+    const chatbotMessages =
+        document.getElementById("chatbot-messages");
+
+    // OPEN CHAT
+
+    chatbotToggle.addEventListener("click", () => {
+
+        chatbot.style.display = "flex";
+
+    });
+
+    // CLOSE CHAT
+
+    chatbotClose.addEventListener("click", () => {
+
+        chatbot.style.display = "none";
+
+    });
+
+    // SEND BUTTON
+
+    chatbotSend.addEventListener("click", sendMessage);
+
+    // ENTER KEY
+
+    chatbotInput.addEventListener("keypress", (e) => {
+
+        if (e.key === "Enter") {
+
+            sendMessage();
+
+        }
+
+    });
+
+    function sendMessage() {
+
+        const text =
+            chatbotInput.value.trim();
+
+        if (!text) return;
+
+        chatbotMessages.innerHTML += `
+            <div class="user-msg">
+                ${text}
+            </div>
+        `;
+
+        const reply =
+            getBotReply(text);
+
+        chatbotMessages.innerHTML += `
+            <div class="bot-msg">
+                ${reply}
+            </div>
+        `;
+
+        chatbotInput.value = "";
+
+        chatbotMessages.scrollTop =
+            chatbotMessages.scrollHeight;
+    }
+
+    function getBotReply(msg) {
+
+        msg = msg.toLowerCase();
+
+        if (msg.includes("helmet")) {
+
+            return "Helmet violation fine in Tamil Nadu is ₹1000.";
+        }
+
+        if (
+            msg.includes("seat belt")
+        ) {
+
+            return "Seat belt violation fine is ₹1000.";
+        }
+
+        if (
+            msg.includes("license")
+        ) {
+
+            return "Driving without license can attract a fine up to ₹5000.";
+        }
+
+        if (
+            msg.includes("speed")
+        ) {
+
+            return "Over-speeding fines depend on vehicle type and state.";
+        }
+
+        if (
+            msg.includes("hi") ||
+            msg.includes("hello")
+        ) {
+
+            return "Hello! How can I help you with traffic rules?";
+        }
+
+        return "I can answer traffic-rule related questions.";
+    }
+
+});
