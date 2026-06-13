@@ -391,16 +391,16 @@ def chatbot():
 
                     "reply":
                     f"""
-Violation:<br></br>
+Violation:
  {violation.replace('_', ' ')}<br></br>
 
-Description:<br></br>
+Description:
 {law['description']}<br></br>
 
-Law Section:<br></br>
+Law Section:
 {law['law_section']}<br></br>
 
-Fine in {state}:<br></br>
+Fine in {state}:
 ₹{fine}
                     """
                 })
