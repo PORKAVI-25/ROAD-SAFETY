@@ -15,7 +15,44 @@ geolocator = Nominatim(
 
 with open("laws.json", "r", encoding="utf-8") as f:
     LAWS = json.load(f)
+KEYWORDS = {
 
+    "helmet": "helmet_violation",
+
+    "signal": "signal_jump",
+
+    "red light": "signal_jump",
+
+    "seatbelt": "seatbelt_violation",
+
+    "speed": "overspeeding",
+
+    "overspeed": "overspeeding",
+
+    "drunk": "drunk_driving",
+
+    "alcohol": "drunk_driving",
+
+    "phone": "mobile_phone_usage",
+
+    "mobile": "mobile_phone_usage",
+
+    "wrong side": "wrong_side_driving",
+
+    "license": "no_driving_license",
+
+    "licence": "no_driving_license",
+
+    "insurance": "without_insurance",
+
+    "pollution": "without_puc",
+
+    "puc": "without_puc",
+
+    "triple": "triple_riding",
+
+    "racing": "racing"
+}
 # =========================================
 # LOAD GEOJSON FILES
 # =========================================
@@ -320,7 +357,71 @@ def calculate_fine():
             "error": str(e)
 
         }), 500
+@app.route("/chatbot", methods=["POST"])
+def chatbot():
 
+    try:
+
+        data = request.json
+
+        message = data.get(
+            "message",
+            ""
+        ).lower()
+
+        state = data.get(
+            "state",
+            "Tamil Nadu"
+        )
+
+        for keyword, violation in KEYWORDS.items():
+
+            if keyword in message:
+
+                law = LAWS[violation]
+
+                fine = law["base_fine"].get(
+                    state,
+                    "Not Available"
+                )
+
+                return jsonify({
+
+                    "success": True,
+
+                    "reply":
+                    f"""
+Violation: {violation.replace('_', ' ')}
+
+Description:
+{law['description']}
+
+Law Section:
+{law['law_section']}
+
+Fine in {state}:
+₹{fine}
+                    """
+                })
+
+        return jsonify({
+
+            "success": True,
+
+            "reply":
+            "Sorry, I couldn't identify the violation."
+
+        })
+
+    except Exception as e:
+
+        return jsonify({
+
+            "success": False,
+
+            "error": str(e)
+
+        })
 
 if __name__ == "__main__":
 
