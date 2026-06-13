@@ -485,14 +485,43 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        const reply =
-            getBotReply(text);
+        fetch("/chatbot", {
 
-        chatbotMessages.innerHTML += `
-            <div class="bot-msg">
-                ${reply}
-            </div>
-        `;
+    method: "POST",
+
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+        message: text
+
+    })
+
+})
+.then(response => response.json())
+.then(data => {
+
+    chatbotMessages.innerHTML += `
+        <div class="bot-msg">
+            ${data.reply}
+        </div>
+    `;
+
+    chatbotMessages.scrollTop =
+        chatbotMessages.scrollHeight;
+
+})
+.catch(error => {
+
+    chatbotMessages.innerHTML += `
+        <div class="bot-msg">
+            Server Error
+        </div>
+    `;
+
+});
 
         chatbotInput.value = "";
 
